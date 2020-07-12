@@ -1,0 +1,15 @@
+p{
+    color: white;
+
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #e6cecc;
+ }
+
+.container-fluid{
+    background-color: #ffe3f3;
+}
+
+.table-striped{
+    border: 1px solid black;
+}

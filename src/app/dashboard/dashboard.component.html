@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div style="text-align:center">
+        <h1><strong>Covid 19 Visualization Dashboard</strong></h1>
+    </div>
+    
+    <div class="d-flex justify-content-center" style="margin-top: 50px;">
+        <div class="d-flex flex-column col-lg-2 bg-warning mx-5 rounded border">
+            <h2 class="align-self-center">Active</h2>
+            <p class="align-self-center">{{statesDetails.TT.total.confirmed- (statesDetails.TT.total.deceased+statesDetails.TT.total.recovered)}}</p>
+        </div>
+        <div class="d-flex flex-column  col-lg-2 bg-danger mx-5 rounded border">
+            <h2 class="align-self-center">Deceased</h2>
+            <p class="align-self-center">{{statesDetails.TT.total.deceased}}</p>
+        </div>
+        <div class="d-flex flex-column col-lg-2 bg-success mx-5 rounded  border">
+            <h2 class="align-self-center">Recovered</h2>
+            <p class="align-self-center">{{statesDetails.TT.total.recovered}}</p>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row ">
+            <div class="col-lg-6">
+                <h4 style="margin-left:115px">Covid 19 cases by states</h4>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">State</th>
+                            <th scope="col">Active</th>
+                            <th scope="col">Recovered</th>
+                            <th scope="col">Deceased</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor= "let iter of states">
+                            <td><a class="btn btn-sm" routerLink="{{statesDetails[iter].name}}">{{statesDetails[iter].name}}</a></td>
+                            <td>{{statesDetails[iter].total.confirmed-statesDetails[iter].total.deceased-statesDetails[iter].total.recovered}}</td>
+                            <td>{{statesDetails[iter].total.recovered}}</td>
+                            <td>{{statesDetails[iter].total.deceased}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <h4 style="margin-left:115px">Total confirmed cases by states</h4>
+                    <canvas style="margin-top: 40px;" baseChart 
+                        [data]="doughnutChartData"
+                        [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType">
+                    </canvas>
+                </div>
+                <div class="row">
+                    <h4 style="margin-left:205px; margin-top: 50px;">Total cases by states</h4>
+                    <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [colors]="barChartColors"
+                        [chartType]="barChartType">                        
+                    </canvas>
+                </div>
+                <div class="row">
+                    <h4 style="margin-left:200px; margin-top: 50px;">Daily cases by states</h4>
+                    <canvas baseChart
+                        [datasets]="barChartData2"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [colors]="barChartColors"
+                        [chartType]="barChartType">                        
+                    </canvas>
+                </div>
+                <div class="row">
+                    <h4 style="margin-left:300px; margin-top: 50px;">Test Count</h4>
+                    <canvas baseChart
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [chartType]="lineChartType">                        
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>

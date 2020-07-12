@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div style="text-align:center">
+        <h1><strong>Covid 19 Visualization Dashboard</strong></h1>
+        <h3><strong>{{stateName}}</strong></h3>
+    </div>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row ">
+            <div class="col-lg-6">
+                <h4 style="margin-left:115px">Covid 19 cases by district</h4>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"><a style="color: white;" class="btn" (click)="sortDist()">District</a></th>
+                            <th scope="col">Active</th>
+                            <th scope="col">Recovered</th>
+                            <th scope="col">Deceased</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let iter of districts">
+                            <td>{{districtDetails[iter].name}}</td>
+                            <td>{{districtDetails[iter].active}}</td>
+                            <td>{{districtDetails[iter].recovered}}</td>
+                            <td>{{districtDetails[iter].deceased}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <h4 style="margin-left:205px; margin-top: 50px;">Total cases by districts</h4>
+                    <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [colors]="barChartColors"
+                        [chartType]="barChartType">                        
+                    </canvas>
+                </div>
+                <div class="row">
+                    <h4 style="margin-left:115px">Total confirmed cases by districts</h4>
+                    <canvas style="margin-top: 40px;" baseChart 
+                        [data]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [colors]="pieChartColors"
+                        [chartType]="pieChartType">
+                    </canvas>
+                </div>
+                <div class="row">
+                    <h4 style="margin-left:300px; margin-top: 50px;">Test Count</h4>
+                    <canvas baseChart
+                        [data]="dailyLineChartData"
+                        [labels]="dailyLineChartLabels"
+                        [options]="dailyLineChartOption"
+                        [legend]="dailyLineChartLegend  "
+                        [chartType]="dailyLineChartType">                        
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
