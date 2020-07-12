@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: "dashboard/:name",
-    component: CityDashboardComponent
+    component: CityDashboardComponent,
+    canActivate: [AuthGuardGuard]
   }
 ];
 

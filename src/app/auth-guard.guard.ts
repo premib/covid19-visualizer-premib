@@ -9,6 +9,7 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      let route: Router
     if(localStorage.getItem('covid19new') == null){
       return false;
     }

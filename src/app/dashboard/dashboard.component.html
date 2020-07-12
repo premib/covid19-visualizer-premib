@@ -9,15 +9,15 @@
     <div class="d-flex justify-content-center" style="margin-top: 50px;">
         <div class="d-flex flex-column col-lg-2 bg-warning mx-5 rounded border">
             <h2 class="align-self-center">Active</h2>
-            <p class="align-self-center">{{statesDetails.TT.total.confirmed- (statesDetails.TT.total.deceased+statesDetails.TT.total.recovered)}}</p>
+            <p class="align-self-center">{{confirmed- (deceased+recovered)}}</p>
         </div>
         <div class="d-flex flex-column  col-lg-2 bg-danger mx-5 rounded border">
             <h2 class="align-self-center">Deceased</h2>
-            <p class="align-self-center">{{statesDetails.TT.total.deceased}}</p>
+            <p class="align-self-center">{{deceased}}</p>
         </div>
         <div class="d-flex flex-column col-lg-2 bg-success mx-5 rounded  border">
             <h2 class="align-self-center">Recovered</h2>
-            <p class="align-self-center">{{statesDetails.TT.total.recovered}}</p>
+            <p class="align-self-center">{{recovered}}</p>
         </div>
     </div>
     <div class="container-fluid" style="margin-top: 150px;">
@@ -49,6 +49,7 @@
                     <canvas style="margin-top: 40px;" baseChart 
                         [data]="doughnutChartData"
                         [labels]="doughnutChartLabels"
+                        [colors]="doughtnutChartColor"
                         [chartType]="doughnutChartType">
                     </canvas>
                 </div>
