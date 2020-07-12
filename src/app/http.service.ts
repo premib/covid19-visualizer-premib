@@ -10,7 +10,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
   
   authenticate(userName: string, password: string): Observable<any>{
-    return this.http.get(`https://zen-user-api.herokuapp.com/users/authenticate/${userName}/${password}`)
+    return this.http.post(`https://zen-user-api.herokuapp.com/users/authenticate`,{email:userName, password:password})
   }
 
   register(firstName: string, lastName: string, userName: string, password: string): Observable<any>{
@@ -25,7 +25,7 @@ export class HttpService {
       responseType: 'text' as const,
       
     }
-    return this.http.post(`https://zen-user-api.herokuapp.com/users/authenticate`, data, options)
+    return this.http.post(`https://zen-user-api.herokuapp.com/users/register`, data, options)
   }
 
   dailyCount(): Observable<any>{

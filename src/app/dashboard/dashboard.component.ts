@@ -4,6 +4,7 @@ import { map, reduce } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Label, SingleDataSet, Color } from 'ng2-charts';
 import { ChartType, ChartOptions, ChartDataSets, ChartData } from 'chart.js';
+import { Router } from '@angular/router';
 
 
 class heel{
@@ -107,7 +108,7 @@ export class DashboardComponent implements OnInit {
   lineChartType: ChartType = 'line';
   lineChartLabels: Label[] = [];
 
-  constructor(private http: HttpService) {
+  constructor(private http: HttpService, private route: Router) {
       
       this.startThings()
       setInterval(async ()=>{
@@ -209,6 +210,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  logout(){
+    localStorage.removeItem('covid19new');
+    this.route.navigateByUrl('');
+  }
   async clearThings(){
     this.doughnutChartLabels = [];
     this.doughnutChartData = [];
